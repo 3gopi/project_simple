@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Root route
 app.get('/', (req, res) => {
-  res.send('✅ erp on http://myproject.techscaleups.in');
+  res.send('✅ e on http://myproject.techscaleups.in');
 });
 
 // User routes
