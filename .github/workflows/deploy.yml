@@ -23,6 +23,7 @@ jobs:
           source: "./"
           target: "/var/www/myproject"
           rm: true
+          debug: true  # 🐞 Add this line
 
       - name: 🔄 Restart App using PM2
         uses: appleboy/ssh-action@master
