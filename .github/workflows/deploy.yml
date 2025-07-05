@@ -19,6 +19,7 @@ jobs:
           echo "node_modules/" >> .scpignore
           echo ".env" >> .scpignore
           echo ".github/" >> .scpignore
+          echo "*.log" >> .scpignore
 
       - name: 🚀 Upload Project to VPS using SSH
         uses: appleboy/scp-action@v0.1.4
