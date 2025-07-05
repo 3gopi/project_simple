@@ -34,14 +34,16 @@ jobs:
           strip_components: 1
           debug: true
 
-      - name: 🔄 Restart App using PM2
-        uses: appleboy/ssh-action@master
+            - name: 🚀 Upload Project to VPS using SSH
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
-          script: |
-            cd /var/www/myproject
-            npm install
-            pm2 restart myproject || pm2 start app.js --name myproject
+          source: "./"
+          target: "/var/www/myproject"
+          rm: true
+          strip_components: 1
+          debug: true
+
