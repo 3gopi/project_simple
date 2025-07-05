@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 📦 Checkout Code
         uses: actions/checkout@v3
 
-      - name: Upload project to VPS
+      - name: 🚀 Upload Project to VPS
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -24,7 +24,7 @@ jobs:
           target: "/var/www/myproject"
           rm: true
 
-      - name: Restart PM2
+      - name: 🔄 Restart App using PM2
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
