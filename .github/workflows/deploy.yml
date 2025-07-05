@@ -13,7 +13,7 @@ jobs:
       - name: 📦 Checkout Code
         uses: actions/checkout@v3
 
-      - name: 🔥 Prepare Deploy Files
+      - name: 🔥 Prepare Ignore File
         run: |
           echo ".git/" >> .scpignore
           echo "node_modules/" >> .scpignore
@@ -21,7 +21,7 @@ jobs:
           echo ".github/" >> .scpignore
           echo "*.log" >> .scpignore
 
-      - name: 🚀 Upload Project to VPS using SSH
+      - name: 🚀 Upload Project to VPS
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -34,7 +34,7 @@ jobs:
           strip_components: 1
           debug: true
 
-      - name: 🔄 Restart App using PM2
+      - name: 🔁 Restart App with PM2
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
