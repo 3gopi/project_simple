@@ -13,7 +13,7 @@ jobs:
       - name: 📦 Checkout Code
         uses: actions/checkout@v3
 
-      - name: 🔥 Prepare Ignore File
+      - name: 🔥 Prepare .scpignore
         run: |
           echo ".git/" >> .scpignore
           echo "node_modules/" >> .scpignore
