@@ -13,6 +13,13 @@ jobs:
       - name: 📦 Checkout Code
         uses: actions/checkout@v3
 
+      - name: 🔥 Prepare Deploy Files
+        run: |
+          echo ".git/" >> .scpignore
+          echo "node_modules/" >> .scpignore
+          echo ".env" >> .scpignore
+          echo ".github/" >> .scpignore
+
       - name: 🚀 Upload Project to VPS using SSH
         uses: appleboy/scp-action@v0.1.4
         with:
