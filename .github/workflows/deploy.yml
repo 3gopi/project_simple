@@ -12,11 +12,11 @@ jobs:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@master
         with:
-          host: 46.202.141.5
-          username: root
-          key: ${{ secrets.VPS_PRIVATE_KEY }}
+          host: 46.202.141.5              # ✅ Your VPS IP
+          username: root                  # ✅ Root access user
+          key: ${{ secrets.VPS_PRIVATE_KEY }}  # ✅ GitHub stored SSH private key
           script: |
-            cd /var/www/myproject
-            git pull origin main
-            npm install
-            pm2 restart myproject
+            cd /var/www/myproject         # ✅ Your project path
+            git pull origin main          # ✅ Pulls latest code
+            npm install                   # ✅ Installs Node.js deps
+            pm2 restart myproject         # ✅ Restarts app using PM2
