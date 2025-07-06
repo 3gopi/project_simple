@@ -3,20 +3,24 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - main
+      - main  # Change if you use another branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: 46.202.141.5              # ✅ Your VPS IP
-          username: root                  # ✅ Root access user
-          key: ${{ secrets.VPS_PRIVATE_KEY }}  # ✅ GitHub stored SSH private key
-          script: |
-            cd /var/www/myproject         # ✅ Your project path
-            git pull origin main          # ✅ Pulls latest code
-            npm install                   # ✅ Installs Node.js deps
-            pm2 restart myproject         # ✅ Restarts app using PM2
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to VPS via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        script: |
+          cd /var/www/nodeproject
+          git pull origin main
+          npm install
+          pm2 restart nodeproject
