@@ -9,7 +9,7 @@ app.use('/api/eroproject', require('./routes/eroproject'));
 
 module.exports = require('express').Router()
   .get('/', (req, res) => {
-    res.json({ message: "Hello from eroproject API!" });
+    res.json({ message: "Hello frm eroproject API!" });
   });
   
 // Start the server
