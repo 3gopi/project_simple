@@ -1,15 +1,18 @@
 const express = require('express');
 const app = express();
-const db = require('./config/db');  // Check if this crashes
-require('dotenv').config();
 
-app.use(express.json());
+// Define your API route under /api
+app.use('/api/eroproject', require('./routes/eroproject'));
 
-app.get('/', (req, res) => {
-  res.send('✅ ERP running!');
-});
+// Example route handler file ./routes/eroproject.js
+// (Create this file if not exists)
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+module.exports = require('express').Router()
+  .get('/', (req, res) => {
+    res.json({ message: "Hello from eroproject API!" });
+  });
+  
+// Start the server
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
 });
